@@ -1,9 +1,9 @@
-### Code from the interpolation library 
 import numpy as np
 import time
-from interpolation.splines import UCGrid, CGrid, nodes, eval_linear
-from interp import vals_to_coords, lin_interp
+from interpolation.splines import UCGrid, nodes, eval_linear
+from interp import lin_interp
 import jax.numpy as jnp
+import matplotlib.pyplot as plt
 
 def test_linear_interp(N_points, N_grid):
     f = lambda x,y: np.sin(np.sqrt(x**2+y**2+0.00001))/np.sqrt(x**2+y**2+0.00001)
@@ -45,14 +45,13 @@ if __name__ == '__main__':
     time_numba_list = []
     time_jax_list = []
 
-    for i in np.arange(2, 1001, 100):
-        for j in np.arange(2, 1001, 100):
+    for i in np.arange(2, 1000, 100):
+        for j in np.arange(2, 1000, 100):
             time_numba, time_jax = test_linear_interp(i, j)
             time_numba_list.append(time_numba)
             time_jax_list.append(time_jax)
 
     # plot the results 
-    import matplotlib.pyplot as plt
     plt.plot(time_numba_list, label='Numba')
     plt.plot(time_jax_list, label='JAX')
     plt.legend()
