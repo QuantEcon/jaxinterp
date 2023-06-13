@@ -32,7 +32,7 @@ def test_linear_interp(N_points, N_grid):
     time_start = time.time()
     linear_interp_jax = lin_interp(grids, values_jnp, points_jnp).block_until_ready()
     time_jax = time.time() - time_start
-    print('Time Numba version:\n', time_jax)
+    print('Time JAX version:\n', time_jax)
     
     print('Difference between Numba and JAX versions: ',
           jnp.linalg.norm(linear_interp_numba - linear_interp_jax))
