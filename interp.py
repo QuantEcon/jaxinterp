@@ -11,7 +11,6 @@ def jit_map_coordinates(vals, coords):
 def vals_to_coords(grids, x_vals, dim):
     """Transform values of the states to corresponding coordinates (array indices) on the grids.
     """
-    # jax.jit doesn't allow dynamic shapes so we hard code its dimension
     intervals = jnp.asarray([grid[1] - grid[0] for grid in grids])
     low_bounds = jnp.asarray([grid[0] for grid in grids]) 
     intervals = intervals.reshape(dim, 1)
