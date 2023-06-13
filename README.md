@@ -11,13 +11,13 @@ Let $f_i = f(v_i)$.
 
 We now want to be able to evaluate $\hat f(x)$, which is a linear interpolation
 of the grid points $v_1, \ldots, v_k$ and corresponding function values 
-$f_i, \ldots, f_k$, at the point $x$.
+$f_1, \ldots, f_k$, at the point $x$.
 
 We want to do this where $n$ can be any integer.
 
 We also want to be able to do this in a vectorized, parallelized manner, so that
 we can pass a large number of evaluation points $x_1, \ldots, x_m$, and compute
-the points $\hat f(x_i), \ldots, f(x_m)$ efficiently.
+the points $\hat f(x_1), \ldots, \hat f(x_m)$ efficiently.
 
 This is already possible in Numba, using the Econforge
 [interpolation library](https://www.econforge.org/interpolation.py/):
