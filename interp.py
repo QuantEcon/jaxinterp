@@ -1,7 +1,8 @@
 import jax
 import jax.numpy as jnp
 from functools import partial
-
+from jax.config import config 
+config.update("jax_enable_x64", True)
 
 @jax.jit
 def jit_map_coordinates(vals, coords):

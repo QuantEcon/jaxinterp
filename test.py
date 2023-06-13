@@ -36,7 +36,7 @@ def test_linear_interp(N_points, N_grid):
     
     print('Difference between Numba and JAX versions: ',
           jnp.linalg.norm(linear_interp_numba - linear_interp_jax))
-    assert jnp.allclose(linear_interp_numba, linear_interp_jax, atol=1e-4), 'Interpolation results are not the same'
+    assert jnp.allclose(linear_interp_numba, linear_interp_jax), 'Interpolation results are not the same'
     print('-'*64)
 
     return time_numba, time_jax
