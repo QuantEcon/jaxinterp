@@ -14,7 +14,7 @@ if __name__ == '__main__':
     N_grid = 10
 
     print('Number of interpolatation points: ', N_points)
-    print('Number of grid points: ', N_points)
+    print('Number of grid points: ', N_grid)
 
     grid = UCGrid((-1.0, 1.0, N_grid), (-1.0, 1.0, N_grid))
     # get grid points
