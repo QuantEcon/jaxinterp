@@ -8,14 +8,14 @@ config.update("jax_enable_x64", True)
 def jit_map_coordinates(vals, coords):
     return jax.scipy.ndimage.map_coordinates(vals, coords, order=1, mode='nearest')
 
-@partial(jax.jit, static_argnames=['dim'])
+@jax.jit
 def vals_to_coords(grids, x_vals, dim):
     """Transform values of the states to corresponding coordinates (array indices) on the grids.
     """
     intervals = jnp.asarray([grid[1] - grid[0] for grid in grids])
     low_bounds = jnp.asarray([grid[0] for grid in grids]) 
-    intervals = intervals.reshape(dim, 1)
-    low_bounds = low_bounds.reshape(dim, 1)
+    intervals = intervals.reshape(-1, 1)
+    low_bounds = low_bounds.reshape(-1, 1)
     return (x_vals - low_bounds) / intervals
 
 @jax.jit

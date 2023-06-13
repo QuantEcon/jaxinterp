@@ -42,23 +42,27 @@ def test_linear_interp(N_points, N_grid):
     return time_numba, time_jax
 
 if __name__ == '__main__':
-    time_numba_list = []
-    time_jax_list = []
-
-    for i in np.arange(2, 1000, 100):
-        for j in np.arange(2, 1000, 100):
-            time_numba, time_jax = test_linear_interp(i, j)
-            time_numba_list.append(time_numba)
-            time_jax_list.append(time_jax)
+    run_time = np.array([[test_linear_interp(i, j), test_linear_interp(i, j)] 
+              for i in np.arange(2, 1000, 100) for j in np.arange(2, 1000, 100)])
 
     # plot the results 
-    plt.plot(time_numba_list, label='Numba')
-    plt.plot(time_jax_list, label='JAX')
+    plt.plot(run_time[:,0][:,0], label='Numba')
+    plt.plot(run_time[:,0][:,1], label='JAX')
     plt.legend()
     plt.xlabel('# Trial')
     plt.ylabel('Time (s)')
     plt.title('Comparison of Numba and JAX versions of linear interpolation')
     plt.savefig('results/linear_interp.png')
+    plt.clf()
+
+    # plot the results 
+    plt.plot(run_time[:,1][:,0], label='Numba')
+    plt.plot(run_time[:,1][:,1], label='JAX')
+    plt.legend()
+    plt.xlabel('# Trial')
+    plt.ylabel('Time (s)')
+    plt.title('Comparison of Numba and JAX versions of linear interpolation (Run 2)')
+    plt.savefig('results/linear_interp_run2.png')
     
 
    
