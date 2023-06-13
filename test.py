@@ -55,10 +55,10 @@ if __name__ == '__main__':
     import matplotlib.pyplot as plt
     plt.plot(time_numba_list, label='Numba')
     plt.plot(time_jax_list, label='JAX')
-    plt.xlabel('Trial (n)')
+    plt.xlabel('# Trial')
     plt.ylabel('Time (s)')
     plt.title('Comparison of Numba and JAX versions of linear interpolation')
-    plt.savefig('linear_interp.png')
+    plt.savefig('results/linear_interp.png')
     
 
    
