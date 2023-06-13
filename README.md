@@ -5,11 +5,13 @@ We need fast linear interpolation in arbitrary dimensions, compatible with
 
 Suppose we have a function $f$ mapping $\mathbb R^n$ to $\mathbb R$ and we evalute $f$ on a
 finite set of grid points $v_1, \ldots, v_k$, where each $v_i$ is a point in
-$\mathbb R^n$.  Let $f_i = f(v_i)$.
+$\mathbb R^n$.  
+
+Let $f_i = f(v_i)$.
 
 We now want to be able to evaluate $\hat f(x)$, which is a linear interpolation
-of the grid points $v_1, \ldots, v_k$ and corresponding function values $f_i,
-\ldots, f_k$, at the point $x$.
+of the grid points $v_1, \ldots, v_k$ and corresponding function values 
+$f_i, \ldots, f_k$, at the point $x$.
 
 We want to do this where $n$ can be any integer.
 
